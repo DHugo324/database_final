@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 使用 password_hash 進行密碼加密
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO user (userid, password, username) VALUES ($userid, '".$hashed_password."', '".$username."')";
+        $sql = "INSERT INTO user (userid, password, username) VALUES ('".$userid."', '".$hashed_password."', '".$username."')";
 
         if ($db->exec($sql)) {
             echo "註冊成功! 3 秒後將自動跳轉頁面<br>";
