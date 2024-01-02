@@ -7,6 +7,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
+$userid = $_SESSION["userid"];
 $username = $_SESSION["username"];
 ?>
 

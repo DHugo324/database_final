@@ -2,18 +2,19 @@
 $conn = require_once("config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $userid = mysqli_real_escape_string($conn, $_POST["userid"]);
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
 
     // 檢查帳號是否重複
-    $check = "SELECT * FROM user WHERE username = '".$username."'";
+    $check = "SELECT * FROM user WHERE userid = '".$userid."'";
     $result = $db->query($check);
 
     if ($result->rowCount() == 0) {
         // 使用 password_hash 進行密碼加密
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO user (id, username, password) VALUES (NULL, '".$username."', '".$hashed_password."')";
+        $sql = "INSERT INTO user (userid, password, username) VALUES ($userid, '".$hashed_password."', '".$username."')";
 
         if ($db->exec($sql)) {
             echo "註冊成功! 3 秒後將自動跳轉頁面<br>";
