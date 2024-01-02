@@ -3,6 +3,7 @@
     session_start();
 
     if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+        function_alert("請先登入");
         header("location: ../index.html");
         exit;
     }
@@ -24,8 +25,8 @@
 課程名稱：
 <input type="text" name="course_name"><br><br>
 網址：
-<input type="url" name="url"><br><br>
-<input type="hidden" name="userid" value="<?php echo $_SESSION['userid']; ?>">
+<input type="url" name="url" required><br><br>
+<input type="hidden" name="userid" value="<?php echo $_SESSION['userid']; ?>" required>
 <input type="submit" value="新增" name="submit">
 </form>
 <a href="../code_practice.php">返回</a>

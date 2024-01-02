@@ -12,6 +12,7 @@
             VALUES ('".$title."', '".$description."', '".$topic."', '".$course_name."', '".$url."', '".$userid."')";
 
     if ($db->exec($sql)) {
+        session_start();
         echo "新增成功! 3 秒後將自動跳轉頁面<br>";
         echo "<a href='../code_practice.php'>未成功跳轉頁面請點擊此</a>";
         $_SESSION["userid"] = $_POST["userid"];
