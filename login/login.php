@@ -16,7 +16,7 @@ if ($stmt->rowCount() == 1) {
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $row['userid'];
         $_SESSION["username"] = $row['username'];
-        header("location: user.php");
+        header("location: ../home.php");
     } else {
         function_alert("帳號或密碼錯誤");
     }
