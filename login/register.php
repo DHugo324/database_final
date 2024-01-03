@@ -2,9 +2,13 @@
 $conn = require_once("config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $userid = mysqli_real_escape_string($conn, $_POST["userid"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    // $userid = mysqli_real_escape_string($conn, $_POST["userid"]);
+    // $password = mysqli_real_escape_string($conn, $_POST["password"]);
+    // $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $userid = $_POST["userid"];
+    $password = $_POST["password"];
+    $username = $_POST["username"];
+
 
     // 檢查帳號是否重複
     $check = "SELECT * FROM user WHERE userid = '".$userid."'";

@@ -21,6 +21,7 @@ $username = $_SESSION["username"];
 <body>
     <h1>你好，<?php echo $username; ?></h1>
     <a href="logout.php">登出</a>
+    <a href="../code_practice/insert/index.php">前往新增程式練習頁面</a>
 </body>
 
 </html>

@@ -4,8 +4,11 @@
 
     if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         function_alert("請先登入");
-        header("location: ../index.html");
         exit;
+    }
+    function function_alert($message) {
+        echo "<script>alert('$message'); window.location.href='../../login/index.php';</script>";
+        return false;
     }
 ?>
 <html>

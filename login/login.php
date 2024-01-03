@@ -9,7 +9,7 @@ $password = $_POST["password"];
 
 // 使用 prepared statement 防範 SQL 注入
 $stmt = $db->prepare("SELECT userid, password, username FROM user WHERE userid = ?");
-$stmt->execute([$userid]);
+$stmt->execute(array($userid));
 
 if ($stmt->rowCount() == 1) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ if ($stmt->rowCount() == 1) {
     }
 } 
 else {
-    function_alert("帳號或密碼錯誤");
+    function_alert("無此帳號");
 }
 
 function function_alert($message) {
