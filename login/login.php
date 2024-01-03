@@ -1,6 +1,5 @@
 <?php
-// Include config file
-require_once "config.php";
+include_once "../db/condb.php";
 
 // Define variables and initialize with empty values
 $userid = $_POST["userid"];
@@ -18,7 +17,7 @@ if ($stmt->rowCount() == 1) {
         $_SESSION["loggedin"] = true;
         $_SESSION["userid"] = $row['userid'];
         $_SESSION["username"] = $row['username'];
-        header("location: welcome.php");
+        header("location: user.php");
     } 
     else {
         function_alert("帳號或密碼錯誤");
