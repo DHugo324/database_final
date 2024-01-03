@@ -3,7 +3,6 @@ include_once "../db/condb.php";
 
 // Define variables and initialize with empty values
 $userid = $_POST["userid"];
-// $username = $_POST["username"];
 $password = $_POST["password"];
 
 // 使用 prepared statement 防範 SQL 注入
@@ -18,16 +17,15 @@ if ($stmt->rowCount() == 1) {
         $_SESSION["userid"] = $row['userid'];
         $_SESSION["username"] = $row['username'];
         header("location: user.php");
-    } 
-    else {
+    } else {
         function_alert("帳號或密碼錯誤");
     }
-} 
-else {
+} else {
     function_alert("無此帳號");
 }
 
-function function_alert($message) {
+function function_alert($message)
+{
     echo "<script>alert('$message'); window.location.href='index.php';</script>";
     return false;
 }
