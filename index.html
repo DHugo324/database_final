@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,12 @@
         * {
             font-family: 'Heebo', sans-serif;
             user-select: none;
-            -webkit-user-select: none; /* 兼容 WebKit 浏览器 */
-            -moz-user-select: none; /* 兼容 Firefox 浏览器 */
-            -ms-user-select: none; /* 兼容 IE/Edge 浏览器 */
+            -webkit-user-select: none;
+            /* 兼容 WebKit 浏览器 */
+            -moz-user-select: none;
+            /* 兼容 Firefox 浏览器 */
+            -ms-user-select: none;
+            /* 兼容 IE/Edge 浏览器 */
         }
 
         html {
@@ -88,6 +92,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -95,9 +100,8 @@
         <nav>
             <ul class="menu">
                 <li><button onclick="toUrl('home.php')">首頁</button></li>
-                <li><button onclick="toUrl('content/course.php')">課程</button></li>
-                <li><button onclick="toUrl('content/note.php')">筆記</button></li>
-                <li><button onclick="toUrl('content/code_practice.php')">程式練習</button></li>
+                <li><button onclick="toUrl('note/note.php')">筆記</button></li>
+                <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
                 <li><button onclick="toUrl('function/insert.php')">新增</button></li>
                 <li><button onclick="toUrl('function/query.php')">查詢</button></li>
                 <li><button onclick="toUrl('login/index.php')">登入</button></li>
@@ -111,4 +115,5 @@
 
     <script src="js/scripts.js"></script>
 </body>
+
 </html>
