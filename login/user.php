@@ -3,8 +3,16 @@ session_start();
 
 // 登入檢查
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: index.php");
+    login_alert();
     exit;
+}
+function login_alert()
+{
+    echo "請先登入! 3 秒後將自動跳轉登入頁面<br>";
+    echo "<a href='index.php'>未成功跳轉頁面請點擊此</a>";
+    echo "或是<a href='../home.php'>返回首頁</a>";
+    header("refresh:3;url=index.php");
+    return false;
 }
 
 $userid = $_SESSION["userid"];
