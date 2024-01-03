@@ -15,9 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 使用 password_hash 進行密碼加密
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO user (userid, password, username) VALUES ('" . $userid . "', '" . $hashed_password . "', '" . $username . "')";
+        $stmt = $db->prepare("INSERT INTO user (userid, password, username) VALUES (?, ?, ?)");
+        $success = $stmt->execute(array($userid, $hashed_password, $username));
 
-        if ($db->exec($sql)) {
+        if ($success) {
             echo "註冊成功! 3 秒後將自動跳轉頁面<br>";
             echo "<a href='index.php'>未成功跳轉頁面請點擊此</a>";
             header("refresh:3;url=index.php");
@@ -71,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="reset" value="重設" name="reset">
     </form>
     <a href="index.php">已有帳號？前往登入頁面</a>
-
 </body>
 
 </html>
