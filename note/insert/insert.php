@@ -13,7 +13,7 @@ function login_alert()
     return false;
 }
 
-$conn = include_once("../../db/condb.php");
+include_once("../../db/condb.php");
 
 $title = $_POST["title"];
 $description = $_POST["description"];
@@ -25,10 +25,8 @@ $userid = $_SESSION['userid'];
 if ($stmt = $db->prepare("INSERT INTO note (title, description, topic, course_name, url, userid) VALUES (?, ?, ?, ?, ?, ?)")) {
     $success = $stmt->execute(array($title, $description, $topic, $course_name, $url, $userid));
     if ($success) {
-        session_start();
         echo "新增成功! 3 秒後將自動跳轉頁面<br>";
         echo "<a href='../note.php'>未成功跳轉頁面請點擊此</a>";
-        $_SESSION["userid"] = $_POST["userid"];
         header("refresh:3;url=../note.php");
         exit;
     } else {
