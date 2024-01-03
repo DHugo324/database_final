@@ -14,4 +14,6 @@ function login_alert()
     header("refresh:3;url=../../account/index.php");
     return false;
 }
+
+$id = $_GET['id'];
 ?>
