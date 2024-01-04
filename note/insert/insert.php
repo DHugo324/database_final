@@ -26,11 +26,13 @@ if ($stmt = $db->prepare("INSERT INTO note (title, description, topic, course_na
     $success = $stmt->execute(array($title, $description, $topic, $course_name, $url, $userid));
     if ($success) {
         echo "新增成功! 3 秒後將自動跳轉頁面<br>";
-        echo "<a href='../note.php'>未成功跳轉頁面請點擊此</a>";
-        header("refresh:3;url=../note.php");
+        echo "<a href='../../user/user.php'>未成功跳轉頁面請點擊此</a>";
+        header("refresh:3;url=../../user/user.php");
         exit;
     } else {
         echo "新增失敗： " . $db->errorInfo()[2];
+        echo "回報BUG請至此：<a href='../../contact/index.php'>";
+        header("refresh:5;url=../../user/user.php");
     }
 }
 ?>

@@ -33,8 +33,8 @@ if ($stmt = $db->prepare("UPDATE note SET title = ?, description = ?, topic = ?,
         exit;
     } else {
         echo "編輯失敗： " . $db->errorInfo()[2];
-        echo "回報BUG請至此：<a href='../../contact.php'>";
-        header("refresh:3;url=../../user/user.php");
+        echo "回報BUG請至此：<a href='../../contact/index.php'>";
+        header("refresh:5;url=../../user/user.php");
     }
 }
 ?>
