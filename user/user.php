@@ -49,12 +49,12 @@ $username = $_SESSION["username"];
             window.location.href = "../note/edit/code_practice/index.php?id=" + id;
         }
 
-        function editNote(id) {
-            window.location.href = "../note/delete/index.php?id=" + id;
+        function deleteNote(id) {
+            window.location.href = "../note/delete/delete.php?id=" + id;
         }
 
-        function editCodePractice(id) {
-            window.location.href = "../note/delete/code_practice/index.php?id=" + id;
+        function deleteCodePractice(id) {
+            window.location.href = "../note/delete/code_practice/delete.php?id=" + id;
         }
     </script>
 </head>
