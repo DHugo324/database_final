@@ -115,7 +115,7 @@ $username = $_SESSION["username"];
                 <?php if ($isLoggedIn): ?>
                     <li><button onclick="toUrl('note/note.php')">筆記</button></li>
                     <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
-                    <li><button onclick="toUrl('function/query.php')">查詢</button></li>
+                    <li><button onclick="toUrl('query/index.php')">查詢</button></li>
                     <li><button onclick="toUrl('user/user.php')">個人頁面</button></li>
                     <li><button onclick="toUrl('account/logout.php')">登出</button></li>
                 <?php else: ?>
