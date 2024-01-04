@@ -28,12 +28,12 @@
     <link href="css/jquery.bxslider.min.css" rel="stylesheet" />
     <script>
         $(document).ready(function(){
-        slider = $('.bxslider').bxSlider(
-            {
-                pagerCustom: '#bx-pager'
-            }
-        );
-        slider.startAuto();
+            slider = $('.bxslider').bxSlider(
+                {
+                    pagerCustom: '#bx-pager'
+                }
+            );
+            slider.startAuto();
         });
     </script>
 </head>
