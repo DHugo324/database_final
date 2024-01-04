@@ -60,10 +60,7 @@ $username = $_SESSION["username"];
 </head>
 
 <body>
-    <!-- <header>
-        <a href="../index.html">首頁</a>
-    </header> -->
-    <a href="../account/logout.php">登出</a>
+    <!-- <a href="../account/logout.php">登出</a> -->
     <h1>你好，
         <?php echo $username; ?>
     </h1>
@@ -199,6 +196,7 @@ $username = $_SESSION["username"];
         </div>
     </div>
     <hr>
+    遇到問題了嗎？<a href="../contact/index.php">回報</a>
 </body>
 
 </html>
