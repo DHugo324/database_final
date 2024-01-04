@@ -46,7 +46,7 @@ $username = $_SESSION["username"];
         }
 
         function editCodePractice(id) {
-            window.location.href = "../note/edit/code_practice/index.php?id=" + id;
+            window.location.href = "../code_practice/edit/index.php?id=" + id;
         }
 
         function deleteNote(id) {
@@ -54,7 +54,7 @@ $username = $_SESSION["username"];
         }
 
         function deleteCodePractice(id) {
-            window.location.href = "../note/delete/code_practice/delete.php?id=" + id;
+            window.location.href = "../code_practice/delete/delete.php?id=" + id;
         }
     </script>
 </head>
@@ -183,8 +183,8 @@ $username = $_SESSION["username"];
                                     <?php echo $rows[$count]['url']; ?>
                                 </td>
                                 <td>
-                                    <button onclick="editNote(<?php echo $rows[$count]['id'] ?>);">修改</button>
-                                    <button onclick="deleteNote(<?php echo $rows[$count]['id'] ?>);">刪除</button>
+                                    <button onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);">修改</button>
+                                    <button onclick="deleteCodePractice(<?php echo $rows[$count]['id'] ?>);">刪除</button>
                                 </td>
                             </tr>
                             <?php

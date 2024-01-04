@@ -18,7 +18,7 @@ function login_alert()
 include_once("../../db/condb.php");
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM code_practice WHERE id = ?";
+$sql = "SELECT userid FROM code_practice WHERE id = ?";
 if ($stmt = $db->prepare($sql)) {
     $stmt->execute(array($id));
     $result = $stmt->fetchAll();

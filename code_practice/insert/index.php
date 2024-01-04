@@ -39,7 +39,7 @@ function login_alert()
             課程名稱：
             <input type="text" name="course_name"><br><br>
             網址：
-            <input type="url" name="url" required><br><br>
+            <input type="url" name="url"><br><br>
             <input type="submit" value="新增" name="submit">
             <input type="reset" value="重設" name="reset">
         </form>
