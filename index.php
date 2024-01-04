@@ -1,5 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+
+// 登入檢查
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    $isLoggedIn = true;
+}
+
+include_once("db/condb.php");
+$userid = $_SESSION["userid"];
+$username = $_SESSION["username"];
+?>
+
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -100,11 +112,18 @@
         <nav>
             <ul class="menu">
                 <li><button onclick="toUrl('home.php')">首頁</button></li>
-                <li><button onclick="toUrl('note/note.php')">筆記</button></li>
-                <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
-                <li><button onclick="toUrl('function/insert.php')">新增</button></li>
-                <li><button onclick="toUrl('function/query.php')">查詢</button></li>
-                <li><button onclick="toUrl('account/index.php')">登入</button></li>
+                <?php if ($isLoggedIn): ?>
+                    <li><button onclick="toUrl('note/note.php')">筆記</button></li>
+                    <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
+                    <li><button onclick="toUrl('function/query.php')">查詢</button></li>
+                    <li><button onclick="toUrl('user/user.php')">個人頁面</button></li>
+                    <li><button onclick="toUrl('account/logout.php')">登出</button></li>
+                <?php else: ?>
+                    <li><button onclick="toUrl('note/note.php')">筆記</button></li>
+                    <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
+                    <li><button onclick="toUrl('function/query.php')">查詢</button></li>
+                    <li><button onclick="toUrl('account/index.php')">登入</button></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
