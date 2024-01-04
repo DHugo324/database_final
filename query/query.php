@@ -143,7 +143,7 @@ $userid = $_POST['userid'] ? $_POST['userid'] : null;
                         // 如果提供了userid，加入userid的查詢條件
                         if ($userid !== null) {
                             $sql .= ($username !== null || $title !== null) ? " AND" : "";
-                            $sql .= " t.userid = :userid";
+                            $sql .= " t.userid LIKE :userid";
                         }
                     }
                     if ($stmt = $db->prepare($sql)) {
@@ -162,7 +162,8 @@ $userid = $_POST['userid'] ? $_POST['userid'] : null;
 
                         // 如果提供了userid，則綁定參數
                         if ($userid !== null) {
-                            $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+                            $userid = '%' . $userid . '%';
+                            $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
                         }
 
                         $stmt->execute();
