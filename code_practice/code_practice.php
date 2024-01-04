@@ -19,6 +19,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Code Practice</title>
     <style>
+        h1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -40,9 +46,9 @@
     </style>
 </head>
 <body>
-    <h2>程式練習列表</h2>
+    <h1>程式練習列表</h1>
     <?php
-        echo "<div style='font-size:large; color:blue;'>共有 ". $result1 . " 個練習</div>";
+        echo "<div style='display: flex; flex-direction: column; align-items: center;font-size:large; color:blue;'>共有 ". $result1 . " 個練習</div>";
     ?>
     <table>
         <tr>
