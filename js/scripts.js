@@ -5,6 +5,10 @@ function toUrl(url) {
     location.reload(true);
 }
 
+function login() {
+    window.location.href = "account/index.php";
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const mainIframe = document.getElementById("mainIframe");
 
