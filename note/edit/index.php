@@ -22,17 +22,24 @@ $sql = "SELECT * FROM note WHERE id = ?";
 if ($stmt = $db->prepare($sql)) {
     $stmt->execute(array($id));
     $result = $stmt->fetchAll();
-    if ($result[0]['userid'] !== $_SESSION["userid"]) {
-        echo "您不是擁有者！ 3 秒後將自動跳轉頁面<br>";
+    if (count($result) > 0) {
+        if ($result[0]['userid'] !== $_SESSION["userid"]) {
+            echo "您不是擁有者！ 3 秒後將自動跳轉頁面<br>";
+            echo "<a href='../../user/user.php'>未成功跳轉頁面請點擊此</a>";
+            header("refresh:3;url=../../user/user.php");
+            exit;
+        }
+        $title = $result[0]['title'];
+        $description = $result[0]['description'];
+        $topic = $result[0]['topic'];
+        $course_name = $result[0]['course_name'];
+        $url = $result[0]['url'];
+    } else {
+        echo "查無此筆記！ 3 秒後將自動跳轉頁面<br>";
         echo "<a href='../../user/user.php'>未成功跳轉頁面請點擊此</a>";
         header("refresh:3;url=../../user/user.php");
         exit;
     }
-    $title = $result[0]['title'];
-    $description = $result[0]['description'];
-    $topic = $result[0]['topic'];
-    $course_name = $result[0]['course_name'];
-    $url = $result[0]['url'];
 }
 ?>
 <html>

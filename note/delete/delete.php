@@ -22,8 +22,15 @@ $sql = "SELECT userid FROM note WHERE id = ?";
 if ($stmt = $db->prepare($sql)) {
     $stmt->execute(array($id));
     $result = $stmt->fetchAll();
-    if ($result[0]['userid'] !== $_SESSION["userid"]) {
-        echo "您不是擁有者！ 3 秒後將自動跳轉頁面<br>";
+    if (count($result) > 0) {
+        if ($result[0]['userid'] !== $_SESSION["userid"]) {
+            echo "您不是擁有者！ 3 秒後將自動跳轉頁面<br>";
+            echo "<a href='../../user/user.php'>未成功跳轉頁面請點擊此</a>";
+            header("refresh:3;url=../../user/user.php");
+            exit;
+        }
+    } else {
+        echo "查無此筆記！ 3 秒後將自動跳轉頁面<br>";
         echo "<a href='../../user/user.php'>未成功跳轉頁面請點擊此</a>";
         header("refresh:3;url=../../user/user.php");
         exit;
@@ -41,6 +48,7 @@ if ($stmt = $db->prepare($sql)) {
         echo "刪除失敗： " . $db->errorInfo()[2];
         echo "回報BUG請至此：<a href='../../contact/index.php'>";
         header("refresh:5;url=../../user/user.php");
+        exit;
     }
 }
 ?>

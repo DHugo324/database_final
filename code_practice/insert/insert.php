@@ -33,6 +33,7 @@ if ($stmt = $db->prepare("INSERT INTO code_practice (title, description, topic, 
         echo "新增失敗： " . $db->errorInfo()[2];
         echo "回報BUG請至此：<a href='../../contact/index.php'>";
         header("refresh:5;url=../../user/user.php");
+        exit;
     }
 }
 ?>
