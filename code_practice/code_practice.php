@@ -4,10 +4,14 @@
     $sql = "SELECT code_practice.id, code_practice.title, code_practice.description, code_practice.topic, code_practice.course_name, code_practice.url, user.username
             FROM code_practice
             INNER JOIN user ON code_practice.userid = user.userid";
-
     $stmt = $db->prepare($sql);
     $error = $stmt->execute();
     $result = $stmt->fetchAll();
+
+    $sql = "SELECT COUNT(*) FROM code_practice";
+    $stmt = $db->prepare($sql);
+    $error = $stmt->execute();
+    $result1 = $stmt->fetchColumn();
 ?>
 <html>
 <head>
@@ -18,27 +22,37 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            table-layout: fixed;
+            background-color: #f2f2f2; /* 淺灰色背景 */
         }
+
         th, td {
-            border: 1px solid #dddddd;
+            border: 1px solid #d9d9d9; /* 深灰色邊框 */
             text-align: left;
             padding: 8px;
+            width: 14.28%;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #999; /* 深灰色表頭 */
+            color: white;
         }
     </style>
 </head>
 <body>
+    <h2>程式練習列表</h2>
+    <?php
+        echo "<div style='font-size:large; color:blue;'>共有 ". $result1 . " 個練習</div>";
+    ?>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Topic</th>
-            <th>Course Name</th>
-            <th>URL</th>
-            <th>Username</th>
+            <th>編號</th>
+            <th>標題</th>
+            <th>描述</th>
+            <th>主題</th>
+            <th>課程名稱</th>
+            <th>網址</th>
+            <th>使用者名稱</th>
         </tr>
 
         <?php
