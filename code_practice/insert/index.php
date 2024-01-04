@@ -20,6 +20,37 @@ function login_alert()
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>新增介面</title>
+    <style>
+        input[type=submit] {
+            padding: 5px 10px;
+            background-color: #5cb85c;
+            color: white;
+            font-weight: bold;
+            font-size: large;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #449d44;
+        }
+
+        input[type=reset] {
+            padding: 5px 10px;
+            background-color: #FF0000;
+            color: white;
+            font-weight: bold;
+            font-size: large;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type=reset]:hover {
+            background-color: #CC0000;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,21 +58,37 @@ function login_alert()
         <img src="../../image/back.png" title="返回" width="50px" height="50px" style="cursor: pointer;"
             onclick="history.back()">
     </div>
-    <main style="width:100%; display: flex; flex-direction: column; align-items: center;">
+    <main style="width:100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <h1>新增程式練習</h1>
         <form method="post" action="insert.php">
-            標題：
-            <input type="text" name="title" required><br><br>
-            描述：
-            <input type="text" name="description"><br><br>
-            主題：
-            <input type="text" name="topic"><br><br>
-            課程名稱：
-            <input type="text" name="course_name"><br><br>
-            網址：
-            <input type="url" name="url"><br><br>
-            <input type="submit" value="新增" name="submit">
-            <input type="reset" value="重設" name="reset">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>標題：</td>
+                        <td><input type="text" name="title" required></td>
+                    </tr>
+                    <tr>
+                        <td>描述：</td>
+                        <td><input type="text" name="description"></td>
+                    </tr>
+                    <tr>
+                        <td>主題：</td>
+                        <td><input type="text" name="topic"></td>
+                    </tr>
+                    <tr>
+                        <td>課程名稱：</td>
+                        <td><input type="text" name="course_name"></td>
+                    </tr>
+                    <tr>
+                        <td>網址：</td>
+                        <td><input type="url" name="url"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <input type="submit" value="新增" name="submit">
+                <input type="reset" value="重設" name="reset">
+            </div>
         </form>
     </main>
 </body>

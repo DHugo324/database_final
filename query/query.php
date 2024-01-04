@@ -104,8 +104,8 @@ $userid = $_POST['userid'] ? $_POST['userid'] : null;
             }
             ?>
         </div>
-        <div>
-            <table>
+        <div style="width: 100%;">
+            <table style="width: 100%; text-align:center;">
                 <thead>
                     <tr>
                         <th>編號</th>

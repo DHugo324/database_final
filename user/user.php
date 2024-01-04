@@ -37,7 +37,7 @@ $username = $_SESSION["username"];
         }
 
         .add:hover {
-            background-color: #77c477;
+            background-color: #449d44;
         }
     </style>
     <script>
@@ -60,7 +60,6 @@ $username = $_SESSION["username"];
 </head>
 
 <body>
-    <!-- <a href="../account/logout.php">登出</a> -->
     <h1>你好，
         <?php echo $username; ?>
     </h1>
@@ -78,8 +77,8 @@ $username = $_SESSION["username"];
                 echo "快新增你的第一篇筆記吧！";
             ?>
         </div>
-        <div>
-            <table>
+        <div style="width: 100%;">
+            <table style="width: 100%; text-align:center;">
                 <thead>
                     <tr>
                         <th>編號</th>
@@ -88,6 +87,7 @@ $username = $_SESSION["username"];
                         <th>主題</th>
                         <th>相關課程</th>
                         <th>網址</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,8 +117,12 @@ $username = $_SESSION["username"];
                                     <?php echo $rows[$count]['url']; ?>
                                 </td>
                                 <td>
-                                    <button onclick="editNote(<?php echo $rows[$count]['id'] ?>);">修改</button>
-                                    <button onclick="deleteNote(<?php echo $rows[$count]['id'] ?>);">刪除</button>
+                                    <button style="background-color: unset; border: none; cursor: pointer;"
+                                        onclick="editNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/edit.png"
+                                            style="width: 30px; height: 30px;"></button>
+                                    <button style="background-color: unset; border: none; cursor: pointer;"
+                                        onclick="deleteNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/delete.png"
+                                            style="width: 30px; height: 30px;"></button>
                                 </td>
                             </tr>
                             <?php
@@ -139,13 +143,13 @@ $username = $_SESSION["username"];
             $stmt = $db->prepare($sql);
             $error = $stmt->execute(array($userid));
             if ($rowcount = $stmt->fetchColumn())
-                echo "共" . $rowcount . "篇";
+                echo "共 " . $rowcount . " 篇";
             else
                 echo "快新增你的第一篇程式練習吧！";
             ?>
         </div>
-        <div>
-            <table>
+        <div style="width: 100%;">
+            <table style="width: 100%; text-align:center;">
                 <thead>
                     <tr>
                         <th>編號</th>
@@ -154,6 +158,7 @@ $username = $_SESSION["username"];
                         <th>主題</th>
                         <th>相關課程</th>
                         <th>網址</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -183,8 +188,12 @@ $username = $_SESSION["username"];
                                     <?php echo $rows[$count]['url']; ?>
                                 </td>
                                 <td>
-                                    <button onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);">修改</button>
-                                    <button onclick="deleteCodePractice(<?php echo $rows[$count]['id'] ?>);">刪除</button>
+                                    <button style="background-color: unset; border: none; cursor: pointer;"
+                                        onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
+                                            src="../image/edit.png" style="width: 30px; height: 30px;"></button>
+                                    <button style="background-color: unset; border: none; cursor: pointer;"
+                                        onclick="deleteCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
+                                            src="../image/delete.png" style="width: 30px; height: 30px;"></button>
                                 </td>
                             </tr>
                             <?php

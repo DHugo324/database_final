@@ -3,6 +3,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>查詢介面</title>
+    <style>
+        input[type=submit] {
+            padding: 5px 10px;
+            background-color: #5cb85c;
+            color: white;
+            font-weight: bold;
+            font-size: large;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #449d44;
+        }
+    </style>
 </head>
 
 <body>
