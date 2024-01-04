@@ -4,11 +4,13 @@ session_start();
 // 登入檢查
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     $isLoggedIn = true;
+} else {
+    $isLoggedIn = false;
 }
 
 include_once("db/condb.php");
-$userid = $_SESSION["userid"];
-$username = $_SESSION["username"];
+$userid = isset($_SESSION["userid"]) ? $_SESSION["userid"] : null;
+$username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
 ?>
 
 <html>
