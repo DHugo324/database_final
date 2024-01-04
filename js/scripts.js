@@ -13,4 +13,5 @@ document.addEventListener("DOMContentLoaded", function() {
     if (savedSrc) {
         mainIframe.src = savedSrc;
     }
+    localStorage.clear();
 });

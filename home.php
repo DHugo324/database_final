@@ -1,5 +1,5 @@
 <?php
-	include("db/condb.php");
+	include_once("db/condb.php");
 ?>
 <html>
 <head>
