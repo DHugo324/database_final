@@ -114,16 +114,14 @@ $username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
         <nav>
             <ul class="menu">
                 <li><button onclick="toUrl('home.php')">首頁</button></li>
+                <li><button onclick="toUrl('honor.php')">榮譽榜</button></li>
+                <li><button onclick="toUrl('note/note.php')">筆記</button></li>
+                <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
+                <li><button onclick="toUrl('query/index.php')">查詢</button></li>
                 <?php if ($isLoggedIn): ?>
-                    <li><button onclick="toUrl('note/note.php')">筆記</button></li>
-                    <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
-                    <li><button onclick="toUrl('query/index.php')">查詢</button></li>
                     <li><button onclick="toUrl('user/user.php')">個人頁面</button></li>
                     <li><button onclick="toUrl('account/logout.php')">登出</button></li>
                 <?php else: ?>
-                    <li><button onclick="toUrl('note/note.php')">筆記</button></li>
-                    <li><button onclick="toUrl('code_practice/code_practice.php')">程式練習</button></li>
-                    <li><button onclick="toUrl('query/index.php')">查詢</button></li>
                     <li><button onclick="login()">登入</button></li>
                 <?php endif; ?>
             </ul>
