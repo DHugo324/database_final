@@ -17,6 +17,15 @@ function login_alert()
 include_once("../db/condb.php");
 $userid = $_SESSION["userid"];
 $username = $_SESSION["username"];
+// function console_log($output, $with_script_tags = true)
+// {
+//     $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+//         ');';
+//     if ($with_script_tags) {
+//         $js_code = '<script>' . $js_code . '</script>';
+//     }
+//     echo $js_code;
+// }
 ?>
 
 <html>
@@ -95,7 +104,7 @@ $username = $_SESSION["username"];
                     $sql = "SELECT id, title, description, topic, course_name, url FROM note WHERE userid = ?";
                     if ($stmt = $db->prepare($sql)) {
                         $stmt->execute(array($userid));
-                        for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
+                        for ($rows = $stmt->fetchAll(), $count = 1; $count < count($rows); $count++) {
                             ?>
                             <tr>
                                 <th scope="row">
@@ -166,7 +175,7 @@ $username = $_SESSION["username"];
                     $sql = "SELECT id, title, description, topic, course_name, url FROM code_practice WHERE userid = ?";
                     if ($stmt = $db->prepare($sql)) {
                         $stmt->execute(array($userid));
-                        for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
+                        for ($rows = $stmt->fetchAll(), $count = 1; $count < count($rows); $count++) {
                             ?>
                             <tr>
                                 <th scope="row">
