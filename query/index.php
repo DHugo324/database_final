@@ -18,25 +18,50 @@
         input[type=submit]:hover {
             background-color: #449d44;
         }
+
+        .queryForm {
+            display: flex;
+        }
+
+        @media screen and (min-width:768px) {
+            .queryForm {
+                flex-direction: row;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .queryForm {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <main style="width:100%; display: flex; flex-direction: column; align-items: center;">
+    <main style="width:100%; height: 100%; display: flex; flex-direction: column; align-items: center;">
         <h1>查詢</h1>
-        <form method="post" action="query.php" target="queryiframe">
-            <select name="type">
-                <option value="note">筆記</option>
-                <option value="code_practice">程式練習</option>
-            </select>
-            使用者ID<input type="text" name="userid">
-            使用者名稱<input type="text" name="username">
-            標題<input type="text" name="title">
-            <input type="submit" value="查詢" name="submit">
+        <form class="queryForm" method="post" action="query.php" target="queryiframe">
+            <div>
+                <span style="float: right; width: 100%;">
+                    <select name="type" style="width: 100%;">
+                        <option value="note">筆記</option>
+                        <option value="code_practice">程式練習</option>
+                    </select>
+                </span>
+            </div>
+            <div>&nbsp;<span>名稱：</span><span style="float: right;"><input type="text" name="username"
+                        placeholder="username"></span>&nbsp;
+            </div>
+            <div>&nbsp;<span>標題：</span><span style="float: right;"><input type="text" name="title"
+                        placeholder="title"></span>&nbsp;</div>
+            <div>&nbsp;<span>主題：</span><span style="float: right;"><input type="text" name="topic"
+                        placeholder="topic"></span>&nbsp;
+            </div>
+            <div>&nbsp;<input type="submit" value="查詢" name="submit">&nbsp;</div>
         </form>
-        <div style="width: 100%; height: auto;">
+        <div class="queryiframe" style="width: 100%; height: 100%;">
             <iframe name="queryiframe" frameborder="0" scrolling="yes" src=""
-                style="width: 100%; height: auto;"></iframe>
+                style="width: 100%; height: 100%;"></iframe>
         </div>
     </main>
 </body>
