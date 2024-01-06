@@ -171,7 +171,7 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
 
                         $stmt->execute();
                         $rows = $stmt->fetchAll();
-                        for ($count = 1; $count < count($rows); $count++) {
+                        for ($count = 0; $count < count($rows); $count++) {
                             ?>
                             <tr>
                                 <th scope="row">
@@ -206,7 +206,7 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
         </div>
     </main>
     <hr>
-    遇到問題了嗎？<a href="../contact/index.php">回報</a>
+    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a href="../contact/index.php">回報</a></div>
 </body>
 
 </html>

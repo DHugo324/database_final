@@ -49,6 +49,7 @@ $username = $_SESSION["username"];
             background-color: #449d44;
         }
     </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script>
         function editNote(id) {
             window.location.href = "../note/edit/index.php?id=" + id;
@@ -69,13 +70,13 @@ $username = $_SESSION["username"];
 </head>
 
 <body>
-    <h1>你好，
+    <h1 class="sub-header" style="margin-left: 8px; margin-right: 8px;">你好，
         <?php echo $username; ?>
     </h1>
-    <div>
-        <h2>我的筆記 <button class="add" onclick="window.location.href = '../note/insert/index.php'">新增</button>
+    <div style="margin-left: 8px; margin-right: 8px;">
+        <h2 class="sub-header">我的筆記 <button class="add" onclick="window.location.href = '../note/insert/index.php'">新增</button>
         </h2>
-        <div style="font-size:large; color:blue;">
+        <div class="sub-header" style="font-size:large; color:blue;">
             <?php
             $sql = "SELECT COUNT(*) FROM note WHERE userid = ?";
             $stmt = $db->prepare($sql);
@@ -86,67 +87,65 @@ $username = $_SESSION["username"];
                 echo "快新增你的第一篇筆記吧！";
             ?>
         </div>
-        <div style="width: 100%;">
-            <table style="width: 100%; text-align:center;">
-                <thead>
-                    <tr>
-                        <th>編號</th>
-                        <th>標題</th>
-                        <th>描述</th>
-                        <th>主題</th>
-                        <th>相關課程</th>
-                        <th>網址</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT id, title, description, topic, course_name, url FROM note WHERE userid = ?";
-                    if ($stmt = $db->prepare($sql)) {
-                        $stmt->execute(array($userid));
-                        for ($rows = $stmt->fetchAll(), $count = 1; $count < count($rows); $count++) {
-                            ?>
-                            <tr>
-                                <th scope="row">
-                                    <?php echo $count; ?>
-                                </th>
-                                <td>
-                                    <?php echo $rows[$count]['title']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['description']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['topic']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['course_name']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['url']; ?>
-                                </td>
-                                <td>
-                                    <button style="background-color: unset; border: none; cursor: pointer;"
-                                        onclick="editNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/edit.png"
-                                            style="width: 30px; height: 30px;"></button>
-                                    <button style="background-color: unset; border: none; cursor: pointer;"
-                                        onclick="deleteNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/delete.png"
-                                            style="width: 30px; height: 30px;"></button>
-                                </td>
-                            </tr>
-                            <?php
-                        }
+        <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>標題</th>
+                    <th>描述</th>
+                    <th>主題</th>
+                    <th>相關課程</th>
+                    <th>網址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT id, title, description, topic, course_name, url FROM note WHERE userid = ?";
+                if ($stmt = $db->prepare($sql)) {
+                    $stmt->execute(array($userid));
+                    for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $count; ?>
+                            </th>
+                            <td>
+                                <?php echo $rows[$count]['title']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['description']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['topic']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['course_name']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['url']; ?>
+                            </td>
+                            <td>
+                                <button style="background-color: unset; border: none; cursor: pointer;"
+                                    onclick="editNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/edit.png"
+                                        style="width: 30px; height: 30px;"></button>
+                                <button style="background-color: unset; border: none; cursor: pointer;"
+                                    onclick="deleteNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/delete.png"
+                                        style="width: 30px; height: 30px;"></button>
+                            </td>
+                        </tr>
+                        <?php
                     }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
     <hr>
-    <div>
-        <h2>我的程式練習 <button class="add" onclick="window.location.href = '../code_practice/insert/index.php'">新增</button>
+    <div style="margin-left: 8px; margin-right: 8px;">
+        <h2 class="sub-header">我的程式練習 <button class="add" onclick="window.location.href = '../code_practice/insert/index.php'">新增</button>
         </h2>
-        <div style="font-size:large; color:blue;">
+        <div class="sub-header" style="font-size:large; color:blue;">
             <?php
             $sql = "SELECT COUNT(*) FROM code_practice WHERE userid = ?";
             $stmt = $db->prepare($sql);
@@ -157,64 +156,62 @@ $username = $_SESSION["username"];
                 echo "快新增你的第一篇程式練習吧！";
             ?>
         </div>
-        <div style="width: 100%;">
-            <table style="width: 100%; text-align:center;">
-                <thead>
-                    <tr>
-                        <th>編號</th>
-                        <th>標題</th>
-                        <th>描述</th>
-                        <th>主題</th>
-                        <th>相關課程</th>
-                        <th>網址</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT id, title, description, topic, course_name, url FROM code_practice WHERE userid = ?";
-                    if ($stmt = $db->prepare($sql)) {
-                        $stmt->execute(array($userid));
-                        for ($rows = $stmt->fetchAll(), $count = 1; $count < count($rows); $count++) {
-                            ?>
-                            <tr>
-                                <th scope="row">
-                                    <?php echo $count; ?>
-                                </th>
-                                <td>
-                                    <?php echo $rows[$count]['title']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['description']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['topic']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['course_name']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $rows[$count]['url']; ?>
-                                </td>
-                                <td>
-                                    <button style="background-color: unset; border: none; cursor: pointer;"
-                                        onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
-                                            src="../image/edit.png" style="width: 30px; height: 30px;"></button>
-                                    <button style="background-color: unset; border: none; cursor: pointer;"
-                                        onclick="deleteCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
-                                            src="../image/delete.png" style="width: 30px; height: 30px;"></button>
-                                </td>
-                            </tr>
-                            <?php
-                        }
+        <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>標題</th>
+                    <th>描述</th>
+                    <th>主題</th>
+                    <th>相關課程</th>
+                    <th>網址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT id, title, description, topic, course_name, url FROM code_practice WHERE userid = ?";
+                if ($stmt = $db->prepare($sql)) {
+                    $stmt->execute(array($userid));
+                    for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $count; ?>
+                            </th>
+                            <td>
+                                <?php echo $rows[$count]['title']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['description']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['topic']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['course_name']; ?>
+                            </td>
+                            <td>
+                                <?php echo $rows[$count]['url']; ?>
+                            </td>
+                            <td>
+                                <button style="background-color: unset; border: none; cursor: pointer;"
+                                    onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
+                                        src="../image/edit.png" style="width: 30px; height: 30px;"></button>
+                                <button style="background-color: unset; border: none; cursor: pointer;"
+                                    onclick="deleteCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
+                                        src="../image/delete.png" style="width: 30px; height: 30px;"></button>
+                            </td>
+                        </tr>
+                        <?php
                     }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
     <hr>
-    遇到問題了嗎？<a href="../contact/index.php">回報</a>
+    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a href="../contact/index.php">回報</a></div>
 </body>
 
 </html>
