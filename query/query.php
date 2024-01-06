@@ -191,7 +191,7 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
                                 <td>
                                     <?php echo $rows[$count]['course_name']; ?>
                                 </td>
-                                <td>
+                                <td><a href="<?php echo $rows[$count]['url']?>" target="_blank">
                                     <?php echo $rows[$count]['url']; ?>
                                 </td>
                                 <td>
