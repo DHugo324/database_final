@@ -29,6 +29,7 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
             background-color: #77c477;
         }
     </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script>
         function editNote(id) {
             window.location.href = "../note/edit/index.php?id=" + id;
@@ -109,7 +110,8 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
             ?>
         </div>
         <div style="width: 100%;">
-            <table style="width: 100%; text-align:center;">
+            <table class="table table-bordered table-striped"
+                style="background-color: #f0f0f0; color: #333; width: 100%; text-align:center;">
                 <thead>
                     <tr>
                         <th>編號</th>
@@ -206,7 +208,8 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
         </div>
     </main>
     <hr>
-    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a href="../contact/index.php">回報</a></div>
+    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a
+            href="../contact/index.php">回報</a></div>
 </body>
 
 </html>
