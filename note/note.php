@@ -29,13 +29,13 @@
         <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
             <thead>
                 <tr>
-                    <th>編號</th>
-                    <th>標題</th>
-                    <th>描述</th>
-                    <th>主題</th>
-                    <th>課程名稱</th>
-                    <th>網址</th>
-                    <th>使用者名稱</th>
+                    <th style='text-align: center;'>編號</th>
+                    <th style='text-align: center;'>標題</th>
+                    <th style='text-align: center;'>描述</th>
+                    <th style='text-align: center;'>主題</th>
+                    <th style='text-align: center;'>課程名稱</th>
+                    <th style='text-align: center;'>網址</th>
+                    <th style='text-align: center;'>使用者名稱</th>
                 </tr>
             </thead>
 
@@ -45,13 +45,13 @@
                     $count = 0;
                     foreach ($result as $row) {
                         echo "<tr>";
-                        echo "<td>{$count}</td>";
-                        echo "<td>{$row['title']}</td>";
-                        echo "<td>{$row['description']}</td>";
-                        echo "<td>{$row['topic']}</td>";
-                        echo "<td>{$row['course_name']}</td>";
-                        echo "<td><a href='{$row['url']}' target='_blank'>{$row['url']}</a></td>"; // 將 URL 包裝在超連結中
-                        echo "<td>{$row['username']}</td>";
+                        echo "<th style='text-align: center;'>{$count}</th>";
+                        echo "<td style='text-align: center;'>{$row['title']}</td>";
+                        echo "<td style='text-align: center;'>{$row['description']}</td>";
+                        echo "<td style='text-align: center;'>{$row['topic']}</td>";
+                        echo "<td style='text-align: center;'>{$row['course_name']}</td>";
+                        echo "<td style='text-align: center;'><a href='{$row['url']}' target='_blank'>{$row['url']}</a></td>"; // 將 URL 包裝在超連結中
+                        echo "<td style='text-align: center;'>{$row['username']}</td>";
                         echo "</tr>";
                         $count++;
                     }

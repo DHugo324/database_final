@@ -90,13 +90,13 @@ $username = $_SESSION["username"];
         <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
             <thead>
                 <tr>
-                    <th>編號</th>
-                    <th>標題</th>
-                    <th>描述</th>
-                    <th>主題</th>
-                    <th>相關課程</th>
-                    <th>網址</th>
-                    <th>操作</th>
+                    <th style='text-align: center;'>編號</th>
+                    <th style='text-align: center;'>標題</th>
+                    <th style='text-align: center;'>描述</th>
+                    <th style='text-align: center;'>主題</th>
+                    <th style='text-align: center;'>相關課程</th>
+                    <th style='text-align: center;'>網址</th>
+                    <th style='text-align: center;'>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -107,25 +107,25 @@ $username = $_SESSION["username"];
                     for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
                         ?>
                         <tr>
-                            <th scope="row">
+                            <th scope="row" style='text-align: center;'>
                                 <?php echo $count; ?>
                             </th>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['title']; ?>
-                            </td>
-                            <td>
+                            </td style='text-align: center;'>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['description']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['topic']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['course_name']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['url']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <button style="background-color: unset; border: none; cursor: pointer;"
                                     onclick="editNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/edit.png"
                                         style="width: 30px; height: 30px;"></button>
@@ -159,13 +159,13 @@ $username = $_SESSION["username"];
         <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
             <thead>
                 <tr>
-                    <th>編號</th>
-                    <th>標題</th>
-                    <th>描述</th>
-                    <th>主題</th>
-                    <th>相關課程</th>
-                    <th>網址</th>
-                    <th>操作</th>
+                    <th style='text-align: center;'>編號</th>
+                    <th style='text-align: center;'>標題</th>
+                    <th style='text-align: center;'>描述</th>
+                    <th style='text-align: center;'>主題</th>
+                    <th style='text-align: center;'>相關課程</th>
+                    <th style='text-align: center;'>網址</th>
+                    <th style='text-align: center;'>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -176,25 +176,25 @@ $username = $_SESSION["username"];
                     for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
                         ?>
                         <tr>
-                            <th scope="row">
+                            <th scope="row" style='text-align: center;'>
                                 <?php echo $count; ?>
                             </th>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['title']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['description']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['topic']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['course_name']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <?php echo $rows[$count]['url']; ?>
                             </td>
-                            <td>
+                            <td style='text-align: center;'>
                                 <button style="background-color: unset; border: none; cursor: pointer;"
                                     onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
                                         src="../image/edit.png" style="width: 30px; height: 30px;"></button>
