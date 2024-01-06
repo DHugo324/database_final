@@ -10,17 +10,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 使用 password_hash 進行密碼加密
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $db->prepare("INSERT INTO user (userid, password, username) VALUES (?, ?, ?)");
-    $success = $stmt->execute(array($userid, $hashed_password, $username));
-
-    if ($success) {
+    try {
+        $stmt = $db->prepare("INSERT INTO user (userid, password, username) VALUES (?, ?, ?)");
+        $stmt->execute(array($userid, $hashed_password, $username));
         echo "註冊成功！ 3 秒後將自動跳轉頁面<br>";
         echo "<a href='index.php'>未成功跳轉頁面請點擊此</a>";
         header("refresh:3;url=index.php");
         exit;
-    } else {
-        echo "註冊失敗： " . $db->errorInfo()[2];
-        echo "請嘗試其他userid";
+    } catch (PDOException $error) {
+        echo "註冊失敗： " . $error->getMessage() . " 請嘗試其他userid<br>";
         echo "<a href='register.php'>返回註冊頁面請點擊此</a>";
         header("refresh:5;url=register.php");
         exit;
