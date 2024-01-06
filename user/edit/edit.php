@@ -29,21 +29,24 @@ $stmt->execute(array($olduserid));
 if ($stmt->rowCount() == 1) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if (password_verify($password, $row['password'])) {
-        if ($stmt = $db->prepare("UPDATE user SET username = ?, userid = ? WHERE userid = ?")) {
-            $success = $stmt->execute(array($username, $newuserid, $olduserid));
-            if ($success) {
-                $_SESSION["userid"] = $newuserid;
-                $_SESSION["name"] = $username;
-                echo "修改成功! 3 秒後將自動跳轉頁面<br>";
-                echo "<a href='../user.php'>未成功跳轉頁面請點擊此</a><br>";
-                header("refresh:3;url=../user.php");
-                exit;
-            } else {
-                echo "編輯失敗： " . $db->errorInfo()[2];
-                echo "回報BUG請至此：<a href='../../contact/index.php'><br>";
-                header("refresh:5;url=../user.php");
-                exit;
+        try {
+            if ($stmt = $db->prepare("UPDATE user SET username = ?, userid = ? WHERE userid = ?")) {
+                $success = $stmt->execute(array($username, $newuserid, $olduserid));
+                if ($success) {
+                    $_SESSION["userid"] = $newuserid;
+                    $_SESSION["username"] = $username;
+                    echo "修改成功! 3 秒後將自動跳轉頁面<br>";
+                    echo "<a href='../user.php'>未成功跳轉頁面請點擊此</a><br>";
+                    header("refresh:3;url=../user.php");
+                    exit;
+                }
             }
+        } catch (PDOException $error) {
+            echo "編輯失敗： " . $error->getMessage() . "，該id已有人使用<br>";
+            echo "5秒後返回編輯頁面：<a href='index.php'>點此</a><br>";
+            echo "回報BUG請至此：<a href='../../contact/index.php'>回報</a><br>";
+            header("refresh:5;url=index.php");
+            exit;
         }
     } else {
         function_alert("密碼錯誤，修改失敗");

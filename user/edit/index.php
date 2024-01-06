@@ -58,7 +58,7 @@ $username = $_SESSION["username"];
 <body>
     <div>
         <img src="../../image/back.png" title="返回" width="50px" height="50px" style="cursor: pointer;"
-            onclick="history.back()">
+            onclick="window.location.href='../user.php'">
     </div>
     <main style="width:100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <h1>修改用戶資料</h1>
