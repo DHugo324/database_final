@@ -9,7 +9,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 function login_alert()
 {
     echo "請先登入! 3 秒後將自動跳轉登入頁面<br>";
-    echo "<a href='index.php'>未成功跳轉頁面請點擊此</a>";
+    echo "<a href='index.php'>未成功跳轉頁面請點擊此</a><br>";
     echo "或是<a href='../home.php'>返回首頁</a>";
     header("refresh:3;url=../account/index.php");
     return false;
@@ -48,6 +48,10 @@ $username = $_SESSION["username"];
         .add:hover {
             background-color: #449d44;
         }
+
+        button {
+            cursor: pointer;
+        }
     </style>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script>
@@ -72,9 +76,13 @@ $username = $_SESSION["username"];
 <body>
     <h1 class="sub-header" style="margin-left: 8px; margin-right: 8px;">你好，
         <?php echo $username; ?>
+        <button style="background-color: unset; border: none;" onclick="window.location.href='edit/index.php';"><img
+                src="../image/setting.png" style="width: 30px; height: 30px;"></button>
     </h1>
     <div style="margin-left: 8px; margin-right: 8px;">
-        <h2 class="sub-header">我的筆記 <button class="add" onclick="window.location.href = '../note/insert/index.php'">新增</button>
+        <h2 class="sub-header" style="display: flex; align-items: center;">
+            我的筆記&nbsp;
+            <button class="add" onclick="window.location.href = '../note/insert/index.php'">新增</button>
         </h2>
         <div class="sub-header" style="font-size:large; color:blue;">
             <?php
@@ -90,13 +98,13 @@ $username = $_SESSION["username"];
         <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
             <thead>
                 <tr>
-                    <th style='text-align: center;'>編號</th>
-                    <th style='text-align: center;'>標題</th>
-                    <th style='text-align: center;'>描述</th>
-                    <th style='text-align: center;'>主題</th>
-                    <th style='text-align: center;'>相關課程</th>
-                    <th style='text-align: center;'>網址</th>
-                    <th style='text-align: center;'>操作</th>
+                    <th>編號</th>
+                    <th>標題</th>
+                    <th>描述</th>
+                    <th>主題</th>
+                    <th>相關課程</th>
+                    <th>網址</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -107,29 +115,29 @@ $username = $_SESSION["username"];
                     for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
                         ?>
                         <tr>
-                            <th scope="row" style='text-align: center;'>
+                            <th scope="row" class="text-center">
                                 <?php echo $count; ?>
                             </th>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['title']; ?>
-                            </td style='text-align: center;'>
-                            <td style='text-align: center;'>
+                            </td class="text-center">
+                            <td class="text-center">
                                 <?php echo $rows[$count]['description']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['topic']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['course_name']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['url']; ?>
                             </td>
-                            <td style='text-align: center;'>
-                                <button style="background-color: unset; border: none; cursor: pointer;"
+                            <td class="text-center">
+                                <button style="background-color: unset; border: none;"
                                     onclick="editNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/edit.png"
                                         style="width: 30px; height: 30px;"></button>
-                                <button style="background-color: unset; border: none; cursor: pointer;"
+                                <button style="background-color: unset; border: none;"
                                     onclick="deleteNote(<?php echo $rows[$count]['id'] ?>);"><img src="../image/delete.png"
                                         style="width: 30px; height: 30px;"></button>
                             </td>
@@ -143,7 +151,9 @@ $username = $_SESSION["username"];
     </div>
     <hr>
     <div style="margin-left: 8px; margin-right: 8px;">
-        <h2 class="sub-header">我的程式練習 <button class="add" onclick="window.location.href = '../code_practice/insert/index.php'">新增</button>
+        <h2 class="sub-header" style="display: flex; align-items: center;">
+            我的程式練習&nbsp;
+            <button class="add" onclick="window.location.href = '../code_practice/insert/index.php'">新增</button>
         </h2>
         <div class="sub-header" style="font-size:large; color:blue;">
             <?php
@@ -159,13 +169,13 @@ $username = $_SESSION["username"];
         <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
             <thead>
                 <tr>
-                    <th style='text-align: center;'>編號</th>
-                    <th style='text-align: center;'>標題</th>
-                    <th style='text-align: center;'>描述</th>
-                    <th style='text-align: center;'>主題</th>
-                    <th style='text-align: center;'>相關課程</th>
-                    <th style='text-align: center;'>網址</th>
-                    <th style='text-align: center;'>操作</th>
+                    <th>編號</th>
+                    <th>標題</th>
+                    <th>描述</th>
+                    <th>主題</th>
+                    <th>相關課程</th>
+                    <th>網址</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -176,29 +186,29 @@ $username = $_SESSION["username"];
                     for ($rows = $stmt->fetchAll(), $count = 0; $count < count($rows); $count++) {
                         ?>
                         <tr>
-                            <th scope="row" style='text-align: center;'>
+                            <th scope="row">
                                 <?php echo $count; ?>
                             </th>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['title']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['description']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['topic']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['course_name']; ?>
                             </td>
-                            <td style='text-align: center;'>
+                            <td class="text-center">
                                 <?php echo $rows[$count]['url']; ?>
                             </td>
-                            <td style='text-align: center;'>
-                                <button style="background-color: unset; border: none; cursor: pointer;"
-                                    onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
-                                        src="../image/edit.png" style="width: 30px; height: 30px;"></button>
-                                <button style="background-color: unset; border: none; cursor: pointer;"
+                            <td class="text-center">
+                                <button style="background-color: unset; border: none;"
+                                    onclick="editCodePractice(<?php echo $rows[$count]['id'] ?>);"><img src="../image/edit.png"
+                                        style="width: 30px; height: 30px;"></button>
+                                <button style="background-color: unset; border: none;"
                                     onclick="deleteCodePractice(<?php echo $rows[$count]['id'] ?>);"><img
                                         src="../image/delete.png" style="width: 30px; height: 30px;"></button>
                             </td>
@@ -211,7 +221,8 @@ $username = $_SESSION["username"];
         </table>
     </div>
     <hr>
-    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a href="../contact/index.php">回報</a></div>
+    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a
+            href="../contact/index.php">回報</a></div>
 </body>
 
 </html>
