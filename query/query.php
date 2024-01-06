@@ -126,9 +126,9 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
                 <tbody>
                     <?php
                     // 建立SQL查詢
-                    $sql = "SELECT t.id, t.title, t.description, t.topic, t.course_name, t.url, user.username
+                    $sql = "SELECT t.id, t.title, t.description, t.topic, t.course_name, t.url, user_view.username
                             FROM $type AS t
-                            LEFT OUTER JOIN user ON t.userid = user.userid";
+                            LEFT OUTER JOIN user_view ON t.userid = user_view.userid";
 
                     // 如果提供了username、title或topic，則加入WHERE條件進行模糊查詢
                     if ($username !== null || $title !== null || $topic !== null) {
@@ -136,7 +136,7 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
 
                         // 如果提供了username，加入username的模糊查詢條件
                         if ($username !== null) {
-                            $sql .= " user.username LIKE :username";
+                            $sql .= " user_view.username LIKE :username";
                         }
 
                         // 如果提供了title，加入title的模糊查詢條件
