@@ -103,7 +103,7 @@ $topic = $_POST['topic'] ? $_POST['topic'] : null;
 
                 $stmt->execute();
                 if ($rowcount = $stmt->fetchColumn())
-                    echo "共" . $rowcount . "筆搜尋結果";
+                    echo "共 " . $rowcount . " 筆搜尋結果";
                 else
                     echo "查無符合資料";
             }
