@@ -18,67 +18,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Code Practice</title>
-    <style>
-        h1 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            table-layout: fixed;
-            background-color: #f2f2f2; /* 淺灰色背景 */
-        }
-
-        th, td {
-            border: 1px solid #d9d9d9; /* 深灰色邊框 */
-            text-align: left;
-            padding: 8px;
-            width: 14.28%;
-        }
-
-        th {
-            background-color: #999; /* 深灰色表頭 */
-            color: white;
-        }
-    </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>程式練習列表</h1>
-    <?php
-        echo "<div style='display: flex; flex-direction: column; align-items: center;font-size:large; color:blue;'>共有 ". $result1 . " 個練習</div>";
-    ?>
-    <table>
-        <tr>
-            <th>編號</th>
-            <th>標題</th>
-            <th>描述</th>
-            <th>主題</th>
-            <th>課程名稱</th>
-            <th>網址</th>
-            <th>使用者名稱</th>
-        </tr>
-
+    <div style="margin-left: 8px; margin-right: 8px;">
+        <h2 class="sub-header">程式練習列表</h2>
         <?php
-        if ($result) {
-            foreach ($result as $row) {
-                echo "<tr>";
-                echo "<td>{$row['id']}</td>";
-                echo "<td>{$row['title']}</td>";
-                echo "<td>{$row['description']}</td>";
-                echo "<td>{$row['topic']}</td>";
-                echo "<td>{$row['course_name']}</td>";
-                echo "<td><a href='{$row['url']}' target='_blank'>{$row['url']}</a></td>"; // 將 URL 包裝在超連結中
-                echo "<td>{$row['username']}</td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='7'>No results found</td></tr>";
-        }
+            echo "<div class='sub-header' style='font-size:large; color:blue;'>共有 ". $result1 . " 個練習</div>";
         ?>
+        <table class="table table-bordered table-striped" style="background-color: #f0f0f0; color: #333;">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>標題</th>
+                    <th>描述</th>
+                    <th>主題</th>
+                    <th>課程名稱</th>
+                    <th>網址</th>
+                    <th>使用者名稱</th>
+                </tr>
+            </thead>
 
-    </table>
+            <tbody>
+                <?php
+                if ($result) {
+                    $count = 0;
+                    foreach ($result as $row) {
+                        echo "<tr>";
+                        echo "<td>{$count}</td>";
+                        echo "<td>{$row['title']}</td>";
+                        echo "<td>{$row['description']}</td>";
+                        echo "<td>{$row['topic']}</td>";
+                        echo "<td>{$row['course_name']}</td>";
+                        echo "<td><a href='{$row['url']}' target='_blank'>{$row['url']}</a></td>"; // 將 URL 包裝在超連結中
+                        echo "<td>{$row['username']}</td>";
+                        echo "</tr>";
+                        $count++;
+                    }
+                }
+                else {
+                    echo "<tr><td colspan='7'>No results found</td></tr>";
+                }
+                ?>
+            </tbody>
+
+        </table>
+    </div>
+    <hr>
+    <div style='display: flex; justify-content: center; align-items: center; flex-direction: row;'>遇到問題了嗎？<a href="../contact/index.php">回報</a></div>
 </body>
 </html>
