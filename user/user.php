@@ -120,7 +120,7 @@ $username = $_SESSION["username"];
                             </th>
                             <td class="text-center">
                                 <?php echo $rows[$count]['title']; ?>
-                            </td class="text-center">
+                            </td>
                             <td class="text-center">
                                 <?php echo $rows[$count]['description']; ?>
                             </td>
@@ -130,7 +130,7 @@ $username = $_SESSION["username"];
                             <td class="text-center">
                                 <?php echo $rows[$count]['course_name']; ?>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center"><a href="<?php echo $rows[$count]['url']?>" target="_blank">
                                 <?php echo $rows[$count]['url']; ?>
                             </td>
                             <td class="text-center">
@@ -201,7 +201,7 @@ $username = $_SESSION["username"];
                             <td class="text-center">
                                 <?php echo $rows[$count]['course_name']; ?>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center"><a href="<?php echo $rows[$count]['url']?>" target="_blank">
                                 <?php echo $rows[$count]['url']; ?>
                             </td>
                             <td class="text-center">
