@@ -19,9 +19,11 @@ if ($stmt->rowCount() == 1) {
         header("location: ../index.php");
     } else {
         function_alert("帳號或密碼錯誤");
+        exit;
     }
 } else {
     function_alert("無此帳號");
+    exit;
 }
 
 function function_alert($message)

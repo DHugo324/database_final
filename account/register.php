@@ -15,13 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($success) {
         echo "註冊成功！ 3 秒後將自動跳轉頁面<br>";
-        echo "<a href='index.php'>未成功跳轉頁面請點擊此</a>";
+        echo "<a href='index.php'>未成功跳轉頁面請點擊此</a><br>";
         header("refresh:3;url=index.php");
         exit;
     } else {
         echo "註冊失敗： " . $db->errorInfo()[2];
         echo "請嘗試其他userid";
-        echo "<a href='register.php'>返回註冊頁面請點擊此</a>";
+        echo "<a href='register.php'>返回註冊頁面請點擊此</a><br>";
         header("refresh:5;url=register.php");
         exit;
     }
@@ -64,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
     <script>
-
         function validateForm() {
             var x = document.forms["registerForm"]["password"].value;
             var y = document.forms["registerForm"]["password_check"].value;
@@ -104,11 +103,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td>使用者名稱：</td>
                         <td><input type="text" name="username" required></td>
                     </tr>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <input type="submit" value="註冊" name="submit">
+                                <input type="reset" value="重設" name="reset">
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
-                <input type="submit" value="註冊" name="submit">
-                <input type="reset" value="重設" name="reset">
             </form>
-            <a href="index.php">已有帳號？前往登入頁面</a>
+            <div style="text-align: center;"><a href="index.php">已有帳號？前往登入頁面</a></div>
         </section>
     </main>
 </body>
