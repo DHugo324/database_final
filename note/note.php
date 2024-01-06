@@ -55,8 +55,7 @@
                         echo "</tr>";
                         $count++;
                     }
-                }
-                else {
+                } else {
                     echo "<tr><td colspan='7'>No results found</td></tr>";
                 }
                 ?>
