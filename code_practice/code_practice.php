@@ -1,9 +1,9 @@
 <?php
 	include_once("../db/condb.php");
     // SQL 查詢，使用 JOIN 連接 note 和 user 表格
-    $sql = "SELECT code_practice.id, code_practice.title, code_practice.description, code_practice.topic, code_practice.course_name, code_practice.url, user.username
+    $sql = "SELECT code_practice.id, code_practice.title, code_practice.description, code_practice.topic, code_practice.course_name, code_practice.url, user_view.username
             FROM code_practice
-            INNER JOIN user ON code_practice.userid = user.userid";
+            INNER JOIN user_view ON code_practice.userid = user_view.userid";
     $stmt = $db->prepare($sql);
     $error = $stmt->execute();
     $result = $stmt->fetchAll();
